@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/jamb/static/css/main.7992f3b0.css",
+    "main.js": "/jamb/static/js/main.6257e1d3.js",
+    "index.html": "/jamb/index.html",
+    "main.7992f3b0.css.map": "/jamb/static/css/main.7992f3b0.css.map",
+    "main.6257e1d3.js.map": "/jamb/static/js/main.6257e1d3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7992f3b0.css",
+    "static/js/main.6257e1d3.js"
+  ]
+}
