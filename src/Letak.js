@@ -9,11 +9,9 @@ export default function Letak(props){
 
     function napraviInput(index){
         
-        let element= <td><input 
+        let element= <td><button 
         key={index}
-        onClick={()=>props.upisi(props.rezultati[index].ozn, index)} 
-        className={props.rezultati[index].ozn} type="number" 
-        value={props.rezultati[index].value} /></td>
+        onClick={()=>props.upisi(props.rezultati[index].ozn, index)}>{props.rezultati[index].value}</button></td>
         
         return element
     }
