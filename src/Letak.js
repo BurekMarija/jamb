@@ -1,45 +1,24 @@
 import React from "react"
+import nextId from "react-id-generator";
 
 export default function Letak(props){
-    const poljeBrojeva=[]
-    for(let i=1; i<7; i++){
-        poljeBrojeva.push(<div className="broj">{i}</div>)
-    }
-
-
-    function napraviInput(index){
-        
-        let element= <td><button 
-        key={index}
-        onClick={()=>props.upisi(props.rezultati[index].ozn, index)}>{props.rezultati[index].value}</button></td>
-        
-        return element
-    }
-
-    function generirajLetak(){
-        let broj=0
-        let index=0
-        let elementi=[]
-        let tabelaElementi=[]
-        const red=["1","2","3","4","5","6","Min","Max","Tris","Skala","Full","Poker","Jamb"]
-        for(let i=0; i<52; i++){
-            
-            if(i%4===0){
-                elementi.push(<th>{red[broj]}</th>)
-                broj=broj+1
-            }
-            else{
-                elementi.push(napraviInput(index))
-                index=index+1
-            }
-        }
-        for(let i=0; i<13; i++)
-        {   
-            tabelaElementi.push(<tr>{elementi[(4*i)+0]}{elementi[(i*4)+1]}{elementi[(i*4)+2]}{elementi[(i*4)+3]}</tr>)
-        }
-
-        return tabelaElementi
-    }
+    const red=["1","2","3","4","5","6","Min","Max","Tris","Skala","Full","Poker","Jamb"]
+  
+    const table= red.map(function(ele, br){
+            const tabbleRow=
+            <tr key={nextId()}>
+                <th key={ele}>{ele}</th>
+            {[0,1,2].map(function(elem, bro){
+                let index=(br*3)+bro
+                return (<td key={`${ele}-${elem}`}><button 
+                    key={index}
+                    onClick={()=>props.upisi(props.rezultati[index].ozn, index)}>
+                        {props.rezultati[index].value}</button>
+                    </td>)
+            })}
+            </tr>
+            return tabbleRow
+       })
 
 
     return(
@@ -54,7 +33,7 @@ export default function Letak(props){
                 </tr>
                 </thead>
                 <tbody>
-                {generirajLetak()}
+                {table}
                 </tbody>
                 <tfoot>
                 <tr>
